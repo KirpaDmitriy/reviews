@@ -1,12 +1,10 @@
-from django.shortcuts import render, get_object_or_404, reverse
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import loader
+from django.shortcuts import render, reverse
+from django.http import HttpResponseRedirect
 from django.views import generic
 
 from .models import User, Review
 
-
-RATE_LOWER_BOUND, RATE_UPPER_BOUND = 1, 5
+from .utils import *
 
 
 class AllReviews(generic.ListView):

@@ -1,0 +1,2 @@
+PUBLISH_ADDRESS = 'https://webhook.site/36693e00-8f59-4f7b-9a85-1d1e7ddde4d4'
+RATE_LOWER_BOUND, RATE_UPPER_BOUND = 1, 5

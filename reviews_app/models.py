@@ -2,8 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils import timezone
 
-
-RATE_LOWER_BOUND, RATE_UPPER_BOUND = 1, 5
+from .utils import *
 
 
 class User(models.Model):
@@ -16,7 +15,7 @@ class User(models.Model):
 class Review(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)  # если удалим пользователя, удалятся и его отзывы
     rate = models.IntegerField(validators=[
-        MinValueValidator(1), MaxValueValidator(5)
+        MinValueValidator(RATE_LOWER_BOUND), MaxValueValidator(RATE_UPPER_BOUND)
     ])
     text = models.TextField(default='', blank=True)
     pub_date = models.DateTimeField(default=timezone.now())
