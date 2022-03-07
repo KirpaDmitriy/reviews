@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Написать отзыв</title>
+</head>
+<body>
+<h1>Новый отзыв</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'create' %}" method="post">
+{% csrf_token %}
+<input type="text" name="user_login" placeholder="Ваш логин"><br>
+<select name="choice" id="rate">
+    <option selected disabled>Ваша оценка</option>
+    {% for choice in possible_rates %}
+        <option value="{{ choice }}">{{ choice }}</option>
+    {% endfor %}
+</select><br>
+<input type="text" name="text" placeholder="Поделитесь впечатлениями"><br>
+<input type="submit" value="Create">
+</form>
+</body>
+</html>
